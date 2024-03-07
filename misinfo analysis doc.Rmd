@@ -1,3 +1,4 @@
+install.packages("ggplot2")
 
 library(dplyr)
 library(readr)
@@ -5,21 +6,25 @@ library(ggplot2)
 
 misinfo_d <- read_csv('../data/life-under-lockdown-wave2-extract (1).csv')
 
-misinfo_d %%
-ggplot(aes(x = gender)) +
-geom_bar()
+misinfo_d %>%
+  ggplot(aes(x = beliefs)) +
+  geom_histogram(bins = 6)
 
 misinfo_d %>%
-ggplot(aes(x = beliefs)) +
-geom_histogram(bins = 6)
+  ggplot(aes(x = beliefs)) +
+  geom_histogram(bins = 6)
 
-mean(misinfo_d_$beliefs)
 
-misinfo_d%>%
-  filter(gender %in% c('Female', 'Male'))
+mean(misinfo_d$beliefs)
+
+
+misinfo_d %>%
+  filter(gender %in% c('Female', 'Male')) %>%
   t.test(formula = beliefs ~ gender, data = .)
   
-  in the sample, males had more misinformation beliefs (M = 0.73) than females (mean = 0.61), but this was not statistically significant, t(494.31) = -1.201, p = 0.230.
+
+In the sample, males had more misinformation beliefs (M = 0.73) than females (mean = 0.61), but this was not statistically significant, t(494.31) = -1.201, p = 0.230.
+  
   
   
   
