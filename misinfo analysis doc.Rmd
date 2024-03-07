@@ -1,30 +1,26 @@
----
-title: "Analysis of coronavirus misinformation beliefs"
-author: "Katie"
-date: "2024-03-07"
-output: html_document
----
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+library(dplyr)
+library(readr)
+library(ggplot2)
 
-## R Markdown
+misinfo_d <- read_csv('../data/life-under-lockdown-wave2-extract (1).csv')
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+misinfo_d %%
+ggplot(aes(x = gender)) +
+geom_bar()
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+misinfo_d %>%
+ggplot(aes(x = beliefs)) +
+geom_histogram(bins = 6)
 
-```{r cars}
-summary(cars)
-```
+mean(misinfo_d_$beliefs)
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+misinfo_d%>%
+  filter(gender %in% c('Female', 'Male'))
+  t.test(formula = beliefs ~ gender, data = .)
+  
+  in the sample, males had more misinformation beliefs (M = 0.73) than females (mean = 0.61), but this was not statistically significant, t(494.31) = -1.201, p = 0.230.
+  
+  
+  
+  
